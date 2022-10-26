@@ -36,10 +36,8 @@ export default function ResumePage() {
 
   const sortedReposArr = useMemo(() => {
     if (userReposDataLoading || userReposDataError) {
-      console.log(123);
       return [];
     }
-    console.log(userReposDataError);
     let sortedList = userReposData;
     sortedList.sort((firstDate, secondDate) => {
       for (let i = 0; i < firstDate.created_at.length; i++) {
@@ -49,7 +47,6 @@ export default function ResumePage() {
         return secondDate.created_at[i] - firstDate.created_at[i];
       }
     });
-    console.log(sortedList);
     return sortedList;
   }, [userReposData]);
 
@@ -61,7 +58,6 @@ export default function ResumePage() {
     let total = 0;
 
     if (userReposData && userReposData.length > 0) {
-      console.log(userReposData);
       userReposData.forEach((element) => {
         promiseArr.push(
           fetch(element.languages_url)
@@ -76,7 +72,6 @@ export default function ResumePage() {
             })
         );
       });
-      console.log(userReposData);
       Promise.all(promiseArr).then(() => {
         langsArr.forEach(([key, val]) => {
           total += val;
@@ -99,14 +94,6 @@ export default function ResumePage() {
     }
   }, [userReposData]);
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
-
-  useEffect(() => {
-    console.log(langsPercentMap);
-  }, [langsPercentMap]);
-
   if (userDataError || userDataLoading) {
     if (userDataLoading) {
       return <p>Loading!</p>;
@@ -114,7 +101,6 @@ export default function ResumePage() {
       navigate("/error");
     }
   } else {
-    console.log([userDataError, userDataLoading, userData]);
     return (
       <Container
         sx={{

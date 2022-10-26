@@ -9,9 +9,8 @@ const useFetch = (url, options) => {
       setLoading(true);
       try {
         const res = await fetch(url, options);
-        if (res.status != 200) throw new Error("Error");
+        if (res.status != 200) throw new Error(`Error status:${res.status}`);
         const json = await res.json();
-        console.log(json);
         setResponse(json);
       } catch (e) {
         setError(e);
