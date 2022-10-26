@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path=":id" element={<ResumePage />} />
-        <Route path="/error" element={<ErrorPage/>}/>
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </Box>
   );

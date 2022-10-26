@@ -90,7 +90,8 @@ export default function ResumePage() {
         for (let [key] of totalLangsMap) {
           const langValue = ((totalLangsMap.get(key) / total) * 100).toFixed(2);
           langsPercMap.set(key, langValue);
-        }4
+        }
+        4;
         //setTotalLangsUsageAmountMap(totalLangsMap);
         setLangsPercentMap(langsPercMap);
         //setLangsDataArr(langsArr);
@@ -107,16 +108,13 @@ export default function ResumePage() {
   }, [langsPercentMap]);
 
   if (userDataError || userDataLoading) {
-    if(userDataLoading){
-      return(
-        <p>Loading!</p>
-      )
-    }
-    else if(userDataError){
-      navigate("/error")
+    if (userDataLoading) {
+      return <p>Loading!</p>;
+    } else if (userDataError) {
+      navigate("/error");
     }
   } else {
-    console.log([userDataError, userDataLoading, userData])
+    console.log([userDataError, userDataLoading, userData]);
     return (
       <Container
         sx={{
